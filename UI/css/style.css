@@ -1,0 +1,223 @@
+/************************* START GLOBALS *************************/
+body {
+    font-family: Nunito, "Segoe UI", cursive, Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+a {
+    outline: 0;
+    text-decoration: none;
+    color: inherit;
+    padding: 0 5px;
+}
+
+a:hover {
+    background: #282639;
+}
+
+ul {
+    list-style-type: none;
+}
+
+svg {
+    height: 1.2em;
+    width: 1.2em;
+    vertical-align: middle;
+}
+
+/************************* END GLOBALS *************************/
+/************************* START HEADER *************************/
+.navbar {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.navbar__logo {
+    font-size: 2.5rem;
+    font-family: cursive;
+    margin: 20px;
+}
+
+.navbar__logo:hover {
+    border: none;
+    background: none;
+}
+
+@media (min-width: 411px) {
+    .navbar__logo {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+    .navbar__logo {
+        font-size: 1.5rem;
+    }
+}
+
+.navbar__menu {
+    display: none;
+    font-size: 1.5em
+}
+
+@media (min-width: 768px) {
+    .navbar__menu {
+        display: block;
+    }
+
+    .navbar__hamburger {
+        display: none;
+    }
+}
+
+.navbar__menu li {
+    margin-left: 4pt;
+    display: inline-block;
+}
+
+.navbar__menu li a:hover {
+    border-bottom: 3px solid #92CF48;
+    transition: .11s ease-in;
+}
+
+@media (min-width: 992px) {
+    .navbar__menu li {
+        margin-left: 16pt;
+    }
+}
+
+.navbar__hamburger {
+    padding-top: 10px;
+    margin-right: 10px;
+}
+
+@media (min-width: 992px) {
+    .navbar__hamburger {
+        display: none;
+    }
+}
+
+nav {
+    margin-right: 20px;
+}
+
+.navbar__menu-mobile {
+    display: none;
+    color: #ffffff;
+    background-color: #423e63;
+    margin-top: 17%;
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+}
+
+@media (min-width: 411px) {
+    .navbar__menu-mobile {
+        margin-top: 20%;
+    }
+}
+
+.navbar__menu-mobile ul {
+    padding-inline-start: 0;
+}
+
+.navbar__menu-mobile li {
+    text-align: center;
+    padding: 8px 0;
+    transition: .7s ease-in-out;
+}
+
+.navbar__menu-mobile li:hover {
+    background: #302D50;
+}
+
+.navbar__menu-mobile a {
+    padding: 0 40%;
+}
+
+.navbar__menu-mobile a {
+    font-size: 18px;
+    background: none;
+}
+
+/************************* END HEADER *************************/
+/************************* START HERO *************************/
+.hero {
+    position: relative;
+    width: 100%;
+    background-image: url("../img/home.png");
+    box-shadow: 0 4px 11px rgba(124, 146, 169, 0.5);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+.hero__z-index-one {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.91;
+    z-index: 1;
+    background-color: #302D50;
+}
+
+.hero__z-index-one--gradient {
+    background: linear-gradient(to right, #473198, #4641ff);
+}
+
+.hero__z-index-two {
+    position: relative;
+    z-index: 2;
+}
+
+.hero__body {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh);
+    padding: calc(92px) 0;
+    overflow: auto;
+}
+
+.hero__body__items {
+    width: 100%;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 1.6rem;
+}
+
+.hero__desc {
+    opacity: 0.85;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .hero__title {
+        font-size: 3rem;
+    }
+
+    .hero__desc {
+        font-size: 1.5rem;
+    }
+}
+
+/************************* END HERO *************************/

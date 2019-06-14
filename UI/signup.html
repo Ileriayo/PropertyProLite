@@ -43,22 +43,34 @@
 
     <main>
         <section>
-            <div class="container container--login">
-                <h1 class="container__title">Login</h1>
-                <p class="container__desc">Enter your email address and password</p>
-                <form>
-                    <label>Email</label>
+            <div class="container container--signup">
+                <h1 class="container__title">SignUp</h1>
+                <p class="container__desc">Enter your details (Fields marked with * are required)</p>
+                <form class="container--form">
+                    <label>First Name*</label>
+                    <input type="text" name="fname" id='fname' placeholder="e.g. Ileriayo">
+                    <label>Last Name*</label>
+                    <input type="text" name="lname" id='lname' placeholder="e.g. Adebiyi">
+                    <label>Email*</label>
                     <input type="text" name="email" placeholder="e.g. ileriayo@gmail.com">
-                    <label>Password</label>
+                    <label>Phone Number*</label>
+                    <input type="number" name="phone_number" placeholder="08123456789" maxlength="11">
+                    <label>Home Address</label>
+                    <input type="text" name="email" placeholder="22 Fosoke Street, Isale Eko, Eko">
+                    <label>Password*</label>
                     <input type="password" name="password"
                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                         autocomplete="off">
-                    <button type='submit' class="button">Log in</button> <br>
-                    <h6><a href="#">Forgot your password?</a></h6>
+                    <label>Confirm Password*</label>
+                    <input type="password" name="confirm_password"
+                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                        autocomplete="off">
+                    <button type='submit' class="button">Sign up</button>
                 </form>
             </div>
         </section>
     </main>
     <script src="./js/app.js"></script>
 </body>
+
 </html>

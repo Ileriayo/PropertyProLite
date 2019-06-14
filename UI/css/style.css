@@ -305,6 +305,21 @@ nav {
     padding: 4rem;
 }
 
+@media (min-width: 1024px) {
+    .container--form {
+        width: 600px;
+    }
+}
+
+.container--signup {
+    padding: 1rem;
+}
+
+@media (max-width: 360px) {
+    .container--signup {
+        padding: 3rem;
+    }
+}
 
 .container__title {
     color: #111;

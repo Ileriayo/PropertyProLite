@@ -191,6 +191,10 @@ nav {
     margin-right: 20px;
 }
 
+nav.navbar__menu-mobile {
+    position: fixed;
+}
+
 .navbar__menu-mobile, .navbar__menu-mobile--margin {
     display: none;
     color: #ffffff;

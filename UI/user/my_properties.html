@@ -56,44 +56,47 @@
         </div>
         <nav class="side-menu navbar__extended on-hover-effect">
             <a href="./all_properties.html">View All Properties</a>
-            <a href="./my_properties.html">My Properties</a>
+            <a href="./my_properties.html" class="active">My Properties</a>
         </nav>
     </header>
 
     <main class="content-section">
         <section class="content-section__main">
-            <img src="../img/property2.jpg" alt="property" class="property__image property__image--center">
-            <div class="table__layout">
-                <table>
-                    <tr>
-                        <td>Owner</td>
-                        <td>Smith Sonia Brown</td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td>10, 000, 000</td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
-                        <td>2 Bedroom Flat</td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td>22 Fosoke Street</td>
-                    </tr>
-                    <tr>
-                        <td>City</td>
-                        <td>Isale Eko</td>
-                    </tr>
-                    <tr>
-                        <td>State</td>
-                        <td>Lagos State</td>
-                    </tr>
-                </table>
+            <div class="container--post-property">
+                <p class="container__title container__desc">Post a Property</p>
+                <form action="./my_properties.html" class="container--form">
+                    <div class="row">
+                        <div class="column1_1">
+                            <label>Image URL</label>
+                            <input type="url" name="prop-url" placeholder="e.g. https://cloudinary.com/example-image">
+                        </div>
+                        <div class="column1_2">
+                            <label>Property Type</label>
+                            <input type="text" name="prop-type" placeholder="e.g. Mini Flat">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column1_1">
+                            <label>Price</label>
+                            <input type="text" name="prop-price" placeholder="e.g. 24000000">
+                        </div>
+                        <div class="column1_2">
+                            <label>Address</label>
+                            <input type="text" name="prop-address" placeholder="e.g. 22 Fosoke Street">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column1_1">
+                            <label>City</label>
+                            <input type="text" name="prop-city" placeholder="e.g. Surulere">
+                        </div>
+                        <div class="column1_2">
+                            <label>State</label>
+                            <input type="text" name="prop-address" placeholder="e.g. Lagos State">
+                        </div>
+                    </div>
+                    <button type='submit' class="button">Submit</button>
+                </form>
             </div>
         </section>
     </main>

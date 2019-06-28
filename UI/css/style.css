@@ -387,7 +387,13 @@ nav.navbar__menu-mobile {
 
 @media (min-width: 1024px) {
     .container--form {
-        width: 600px;
+        width: fit-content;
+    }
+}
+
+@media (max-width: 768px) {
+    .container--form {
+        width: 250px;
     }
 }
 
@@ -578,7 +584,7 @@ nav.navbar__menu-mobile {
 }
 
 .property__agent {
-    text-align: center;
+    text-align: cex nter;
     max-width: 200px;
     margin: 0
 }
@@ -668,3 +674,21 @@ td {
 }
 
 /********** END FILTER ************/
+/********** START PROPERTY POST ************/
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 1366px) {
+    .column1_1, .column1_2 {
+        width: 400px;
+    }
+}
+
+.container--post-property {
+    text-align: center;
+}
+
+.container--form
+/********** END PROPERTY POST ************/

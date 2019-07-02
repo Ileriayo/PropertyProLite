@@ -13,9 +13,9 @@
     const editBtn = document.querySelectorAll('.btn-edit');
     const cancelBtn = document.querySelectorAll('.btn-cancel');
     const updateBtn = document.querySelectorAll('.btn-update');
-    // console.log(cancelBtn);
+    const deleteBtn = document.querySelectorAll('.btn-delete');
+    
     for (let i = 0; i < editBtn.length; i++) {
-        // let editModeDeactivated = true;
         const editBtnParent = editBtn[i].parentNode;
         const editBtnGrandParent = editBtnParent.parentNode;
         const childrenNodes = editBtnGrandParent.children;
@@ -30,6 +30,7 @@
             editBtn[i].style.display = "none";
             changeDisplayState(cancelBtn[i]);
             changeDisplayState(updateBtn[i]);
+            deleteBtn[i].style.display = "none";
             
             childrenNodes[2].innerHTML = `<input type="text" value="${childrenNodes[2].textContent}">`;
             childrenNodes[3].innerHTML = `<input type="text" value="${childrenNodes[3].textContent}">`;
@@ -49,10 +50,13 @@
             changeDisplayState(editBtn[i]);
             changeDisplayState(cancelBtn[i]);
             changeDisplayState(updateBtn[i]);
+            changeDisplayState(deleteBtn[i]);
         });
 
         updateBtn[i].addEventListener('click', () => {
-            return;
+        });
+
+        deleteBtn[i].addEventListener('click', () => {
         });
     }
 })();

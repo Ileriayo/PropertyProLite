@@ -76,6 +76,11 @@ input:focus {
     transition: 0.7s;
 }
 
+.button--small {
+    border-radius: 30px;
+    padding: 5pt 10pt;
+}
+
 .button--centered {
     text-align: center;
 }
@@ -94,6 +99,10 @@ form {
     background: #282639;
     border-left: 3px solid #92CF48;
     transition: .11s ease-in;
+}
+
+.no-display, .no-display2 {
+    display: none;
 }
 
 /************************* END GLOBALS *************************/
@@ -508,6 +517,10 @@ nav.navbar__menu-mobile {
     flex-wrap: wrap;
 }
 
+.content-section__main-2 {
+    margin-right: 80px;
+}
+
 .property {
     padding-right: 35px;
     transition: 2s;
@@ -658,6 +671,22 @@ td {
     padding: 10px;
 }
 
+.my_property_section {
+    overflow-x: auto;
+}
+
+.my_property_table {
+    width: 100%;
+}
+
+.my_property_table thead {
+    background: none;
+}
+
+.my_property_table tr {
+    text-align: center;
+}
+
 /********** END TABLE ************/
 /********** START TABLE ************/
 .filter {
@@ -690,5 +719,4 @@ td {
     text-align: center;
 }
 
-.container--form
 /********** END PROPERTY POST ************/

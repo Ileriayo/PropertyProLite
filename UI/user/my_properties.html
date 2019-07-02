@@ -61,10 +61,11 @@
     </header>
 
     <main class="content-section">
-        <section class="content-section__main">
-            <div class="container--post-property">
-                <p class="container__title container__desc">Post a Property</p>
-                <form action="./my_properties.html" class="container--form">
+        <section class="content-section__main content-section__main-2">
+            <section class="container--post-property">
+                <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">Click to
+                        Post a Property Ad</a></p>
+                <form action="./my_properties.html" class="no-display container--form">
                     <div class="row">
                         <div class="column1_1">
                             <label>Image URL</label>
@@ -97,10 +98,50 @@
                     </div>
                     <button type='submit' class="button">Submit</button>
                 </form>
-            </div>
+            </section>
+            <section class="my_property_section">
+                <hr>
+                <table class="my_property_table">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="">https://cloudinary.com/emaple-image</a></td>
+                            <td>3 Bedroom Flat</td>
+                            <td>3000000</td>
+                            <td>6045B Princeton Avenue</td>
+                            <td>Princeton</td>
+                            <td>Lagos</td>
+                            <td><button class="button button--small btn-edit">Edit</button><button class="button button--small btn-update no-display"><a href="">Update</a></button><button class="button button--small btn-cancel no-display">Cancel</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="">https://cloudinary.com/emaple-image</a></td>
+                            <td>3 Bedroom Flat</td>
+                            <td>3000000</td>
+                            <td>6045B Princeton Avenue</td>
+                            <td>Princeton</td>
+                            <td>Lagos</td>
+                            <td><button class="button button--small btn-edit">Edit</button><button class="button button--small btn-update no-display"><a href="">Update</a></button><button class="button button--small btn-cancel no-display">Cancel</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
         </section>
     </main>
     <script src="../js/app.js"></script>
+    <script src="../js/my_properties.js"></script>
 </body>
 
 </html>

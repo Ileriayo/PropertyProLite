@@ -101,7 +101,8 @@ form {
     transition: .11s ease-in;
 }
 
-.no-display, .no-display2 {
+.no-display,
+.no-display2 {
     display: none;
 }
 
@@ -604,17 +605,12 @@ nav.navbar__menu-mobile {
 
 /************************* END CONTENT SECTION *****************************/
 /********** START TABLE ************/
-@media (min-width: 640px) {
-    .table__layout {
-        margin: 0 auto;
-    }
-}
-
 table {
     border-collapse: collapse;
     color: #282639;
     width: 219px;
     margin-top: 30px;
+    font-size: .9em;
 }
 
 @media (width: 568px) {
@@ -626,6 +622,10 @@ table {
 @media (min-width: 640px) {
     table {
         width: 300px;
+    }
+
+    .table__layout {
+        margin: 0 auto;
     }
 }
 
@@ -688,7 +688,7 @@ td {
 }
 
 /********** END TABLE ************/
-/********** START TABLE ************/
+/********** START FILTER ************/
 .filter {
     margin-left: 10px;
 }
@@ -710,7 +710,9 @@ td {
 }
 
 @media (min-width: 1366px) {
-    .column1_1, .column1_2 {
+
+    .column1_1,
+    .column1_2 {
         width: 400px;
     }
 }

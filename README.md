@@ -1,6 +1,11 @@
 # PropertyProLite
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
+[![Build Status](https://travis-ci.org/Ileriayo/PropertyProLite.svg?branch=develop)](https://travis-ci.org/Ileriayo/PropertyProLite)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7e164092931be5b97219/maintainability)](https://codeclimate.com/github/Ileriayo/PropertyProLite/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7e164092931be5b97219/test_coverage)](https://codeclimate.com/github/Ileriayo/PropertyProLite/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/Ileriayo/PropertyProLite/badge.svg?branch=develop)](https://coveralls.io/github/Ileriayo/PropertyProLite?branch=develop)
+
 ## Features
 1. User can sign up.
 2. User can sign in.

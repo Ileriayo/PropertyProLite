@@ -1,1 +1,6 @@
 /node_modules
+dist
+/.env
+/.coveralls.yml
+/.nyc_output
+/coverage

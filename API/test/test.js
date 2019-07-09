@@ -61,3 +61,61 @@ describe('POST /api/v1/auth/signup', () => {
       });
   });
 });
+describe('POST /api/v1/auth/signin', () => {
+  it('Should sign in existing user', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .type('form')
+      .send({
+        email: 'john@gmail.com',
+        password: 'mygreatpassword',
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('Should return 404 for non-existing user', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .type('form')
+      .send({
+        email: 'no-user@gmail.com',
+        password: 'mygreatpassword',
+      })
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('Should return 401 for wrong password', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .type('form')
+      .send({
+        email: 'john@gmail.com',
+        password: 'wrongpassword',
+      })
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('Should check for required fields', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .type('form')
+      .send({})
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});

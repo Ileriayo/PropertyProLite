@@ -1,8 +1,8 @@
 import express from 'express';
 import UserController from '../controllers/user.controller';
-import ValidateSignup from '../middlewares/validateSignUp';
+import ValidateSignUp from '../middlewares/validateSignUp';
 
-const { signUp } = UserController;
+const { signUp, signIn } = UserController;
 const {
   checkRequestBody,
   checkFirstName,
@@ -15,7 +15,7 @@ const {
   checkLastNameLength,
   validateEmail,
   checkPasswordLength,
-} = ValidateSignup;
+} = ValidateSignUp;
 
 const userRouter = express.Router();
 
@@ -33,6 +33,14 @@ userRouter.post(
   checkPassword,
   checkPasswordLength,
   signUp,
+);
+
+userRouter.post(
+  '/signin',
+  checkEmail,
+  validateEmail,
+  checkPassword,
+  signIn,
 );
 
 export default userRouter;

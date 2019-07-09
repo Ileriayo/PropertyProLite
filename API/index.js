@@ -1,13 +1,14 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import 'babel-polyfill';
 
 import Cors from './middlewares/cors';
 import ErrorHandler from './middlewares/errorHandler';
 import userRoutes from './routes/user.routes';
 
-require('dotenv').config();
+dotenv.config();
 
 const port = process.env.PORT || 5000;
 

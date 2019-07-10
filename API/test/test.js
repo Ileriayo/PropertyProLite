@@ -5,7 +5,6 @@ import app from '../index';
 
 chai.use(chaiHttp);
 chai.should();
-// require('dotenv').config();
 
 describe('GET /', () => {
   it('Should get to the root directory of the app', (done) => {
@@ -38,12 +37,50 @@ describe('POST /api/v1/auth/signup', () => {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john@gmail.com',
-        phoneNumber: 2348123456789,
+        phoneNumber: '08123456789',
         address: '22 Fosoke Street, S/L, Lagos',
         password: 'mygreatpassword',
       })
       .end((err, res) => {
         res.should.have.status(201);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('Should check for email pattern', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .type('form')
+      .send({
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john !@gmail.com',
+        phoneNumber: '08123456789',
+        address: '22 Fosoke Street, S/L, Lagos',
+        password: 'mygreatpassword',
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('Should check field length', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .type('form')
+      .send({
+        firstName: 'Jo',
+        lastName: 'Do',
+        email: 'john@gmail.com',
+        phoneNumber: '08123456789',
+        address: '22 Fosoke Street, S/L, Lagos',
+        password: 'mygreatpassword',
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });

@@ -32,8 +32,6 @@ app.use('/api/v1/auth', userRoutes);
 app.use(errorHandler404);
 // app.use(errorHandler500);
 
-app.listen(port, () => {
-  console.log(`PropertyPro is listening on ${port}`);
-});
+app.listen(port, () => console.log(`PropertyPro is listening on ${port}`));
 
 export default app;

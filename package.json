@@ -4,7 +4,7 @@
   "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-core/register API/test/**/*.js --timeout 50000 --exit || true",
+    "test": "mocha --require babel-core/register API/test/**/*.js --timeout 100000 --exit || true",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "dev": "nodemon bin/dev",

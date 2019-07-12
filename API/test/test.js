@@ -24,7 +24,7 @@ describe('GET /', () => {
       .get('/a')
       .end((err, res) => {
         res.should.have.status(404);
-        // res.body.should.be.a('object');
+        res.body.should.be.a('object');
         done();
       });
   });
@@ -192,7 +192,23 @@ describe('GET /api/v1/property', () => {
       .type('form')
       .end((err, res) => {
         res.should.have.status(200);
-        // res.body.should.be.a('object');
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+});
+
+describe('GET /api/v1/property/<:property-id>/', () => {
+  it('Should get one property by id', (done) => {
+    const req = chai.request(app)
+      .get('/api/v1/property/8');
+    req.set('cookie', cookie)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
         done();
       });
   });

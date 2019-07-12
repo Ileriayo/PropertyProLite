@@ -1,9 +1,11 @@
-import userData from '../utils/users';
+import userModel from '../models/users.models';
+
+const { getUserByEmail } = userModel;
 
 class CheckEmail {
   static async checkEmail(email) {
     try {
-      const existingUser = userData.find(user => user.email === email);
+      const existingUser = getUserByEmail(email);
       if (existingUser) {
         return existingUser;
       }

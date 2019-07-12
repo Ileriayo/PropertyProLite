@@ -1,9 +1,10 @@
-import userData from '../utils/users';
+import userModel from '../models/users.models';
 import CheckEmail from '../helpers/checkEmail';
 import CheckPassword from '../helpers/checkPassword';
 import HashPassword from '../helpers/hashPassword';
 import Tokenizer from '../helpers/tokenizer';
 
+const { addUser, getAllUsers } = userModel;
 const { hashPassword } = HashPassword;
 const { tokenizer } = Tokenizer;
 const { checkEmail } = CheckEmail;
@@ -24,11 +25,18 @@ class UserController {
       }
       const hashedPassword = await hashPassword(password);
       const newUser = {
-        id: userData.length + 1, email, firstName, lastName, password: hashedPassword, phoneNumber, address, isAdmin: false,
+        id: getAllUsers().length + 1,
+        email,
+        firstName,
+        lastName,
+        password: hashedPassword,
+        phoneNumber,
+        address,
+        isAdmin: false,
       };
       const { id } = newUser;
-      const token = await tokenizer({ id, email });
-      userData.push(newUser);
+      const token = await tokenizer({ id });
+      addUser(newUser);
       res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
       return res.status(201).json({
         status: 'success',
@@ -59,7 +67,7 @@ class UserController {
       });
     }
     const { id, firstName, lastName } = validUser;
-    const token = await tokenizer({ id, email });
+    const token = await tokenizer({ id });
     res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
     return res.status(200).json({
       status: 'success',

@@ -1,5 +1,7 @@
+import userModel from '../models/users.models';
 import DecodeToken from '../helpers/decodeToken';
 
+const { getUserById } = userModel;
 const { decodeToken } = DecodeToken;
 
 export default class Authenticate {
@@ -13,7 +15,9 @@ export default class Authenticate {
     }
 
     try {
-      const user = await decodeToken(token);
+      let user = await decodeToken(token);
+      const { id } = user;
+      user = getUserById(id);
       req.user = user;
       return next();
     } catch (error) {

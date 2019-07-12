@@ -1,6 +1,8 @@
 import propertyModel from '../models/properties.models';
 
-const { addProperty, getAllProperties } = propertyModel;
+const {
+  addProperty, getAllProperties, getPropertyById,
+} = propertyModel;
 
 class PropertyController {
   static async createProperty(req, res) {
@@ -8,25 +10,37 @@ class PropertyController {
       body: {
         price, state, city, address, type, imageUrl,
       },
-      user: { id },
+      user: { email, phoneNumber },
     } = req;
-
     try {
       const property = {
-        id: await getAllProperties().length + 1,
-        owner: id,
-        price,
+        id: getAllProperties().length + 1,
+        status: 'Available',
+        type,
         state,
         city,
         address,
-        type,
+        price,
+        createdOn: new Date().toLocaleString(),
         imageUrl,
+        ownerEmail: email,
+        ownerPhoneNumber: phoneNumber,
       };
 
       await addProperty(property);
       return res.status(201).json({
         status: 'success',
-        data: property,
+        data: {
+          id: property.id,
+          status: property.status,
+          type,
+          state,
+          city,
+          address,
+          price,
+          createdOn: property.createdOn,
+          imageUrl,
+        },
       });
     } catch (error) {
       return error;
@@ -39,6 +53,19 @@ class PropertyController {
       return res.status(200).json({
         status: 'success',
         data: allProperties,
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async getPropertyById(req, res) {
+    try {
+      const { params: { id } } = req;
+      const property = getPropertyById(id);
+      return res.status(200).json({
+        status: 'success',
+        data: property || [],
       });
     } catch (error) {
       return error;

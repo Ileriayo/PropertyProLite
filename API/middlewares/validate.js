@@ -1,7 +1,9 @@
 import ValidationHelpers from '../helpers/validationHelpers';
 import regex from '../utils/regexes';
 
-const { emailRegex, passwordRegex, phoneNumberRegex } = regex;
+const {
+  emailRegex, passwordRegex, phoneNumberRegex, numberRegex,
+} = regex;
 const { checkForEmptyField, checkFieldPattern, checkFieldLength } = ValidationHelpers;
 
 class Validate {
@@ -23,6 +25,28 @@ class Validate {
     errors.push(...checkForEmptyField('Email', email));
     errors.push(...checkFieldPattern('Email address', email, emailRegex));
     errors.push(...checkForEmptyField('Password', password));
+
+    if (errors.length) {
+      return res.status(400).json({
+        status: 'Error: Field(s) require your attention',
+        error: errors,
+      });
+    }
+    return next();
+  }
+
+  static async checkProperty(req, res, next) {
+    const errors = [];
+    const {
+      price, state, city, address, type, imageUrl,
+    } = req.body;
+    errors.push(...checkForEmptyField('Price', price));
+    errors.push(...checkFieldPattern('Price', price, numberRegex));
+    errors.push(...checkForEmptyField('State', state));
+    errors.push(...checkForEmptyField('City', city));
+    errors.push(...checkForEmptyField('Address', address));
+    errors.push(...checkForEmptyField('Type', type));
+    errors.push(...checkForEmptyField('Image', imageUrl));
 
     if (errors.length) {
       return res.status(400).json({

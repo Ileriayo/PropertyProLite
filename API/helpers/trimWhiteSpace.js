@@ -1,5 +1,6 @@
 const trimWhiteSpace = (input) => {
-  const trimmedInput = input.trim();
+  let trimmedInput = input.toString();
+  trimmedInput = trimmedInput.trim();
   return trimmedInput;
 };
 

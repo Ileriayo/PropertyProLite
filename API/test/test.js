@@ -6,6 +6,8 @@ import app from '../index';
 chai.use(chaiHttp);
 chai.should();
 
+let cookie;
+
 describe('GET /', () => {
   it('Should get to the root directory of the app', (done) => {
     chai.request(app)
@@ -44,6 +46,7 @@ describe('POST /api/v1/auth/signup', () => {
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a('object');
+        cookie = res.header['set-cookie'];
         done();
       });
   });
@@ -98,23 +101,9 @@ describe('POST /api/v1/auth/signup', () => {
       });
   });
 });
-describe('POST /api/v1/auth/signin', () => {
-  it('Should sign in existing user', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signin')
-      .type('form')
-      .send({
-        email: 'john@gmail.com',
-        password: 'mygreatpassword',
-      })
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('object');
-        done();
-      });
-  });
 
-  it('Should return 404 for non-existing user', (done) => {
+describe('POST /api/v1/auth/signin', () => {
+  it('Should return 401 for non-existing user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
       .type('form')
@@ -123,7 +112,7 @@ describe('POST /api/v1/auth/signin', () => {
         password: 'mygreatpassword',
       })
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         done();
       });
@@ -155,4 +144,62 @@ describe('POST /api/v1/auth/signin', () => {
         done();
       });
   });
+
+  it('Should sign in existing user', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .type('form')
+      .send({
+        email: 'john@gmail.com',
+        password: 'mygreatpassword',
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        cookie = res.header['set-cookie'];
+        done();
+      });
+  });
+});
+
+describe('POST /api/v1/property', () => {
+  it('Should create property ad', (done) => {
+    const req = chai.request(app)
+      .post('/api/v1/property/');
+    req.set('cookie', cookie)
+      .type('form')
+      .send({
+        price: 3000000,
+        state: 'Lagos',
+        city: 'Isale Eko',
+        address: '954, Mountain hill',
+        type: 'Mini Flat',
+        imageUrl: 'https://cloudinary.com/wef84r3nnf',
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  // it('Should handle price in string format', (done) => {
+  //   const req = chai.request(app)
+  //     .post('/api/v1/property/');
+  //   req.set('cookie', cookie)
+  //     .type('form')
+  //     .send({
+  //       price: '3000000',
+  //       state: 'Lagos',
+  //       city: 'Isale Eko',
+  //       address: '954, Mountain hill',
+  //       type: 'Mini Flat',
+  //       imageUrl: 'https://cloudinary.com/wef84r3nnf',
+  //     })
+  //     .end((err, res) => {
+  //       res.should.have.status(201);
+  //       res.body.should.be.a('object');
+  //       done();
+  //     });
+  // });
 });

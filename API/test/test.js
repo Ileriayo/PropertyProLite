@@ -182,24 +182,18 @@ describe('POST /api/v1/property', () => {
         done();
       });
   });
+});
 
-  // it('Should handle price in string format', (done) => {
-  //   const req = chai.request(app)
-  //     .post('/api/v1/property/');
-  //   req.set('cookie', cookie)
-  //     .type('form')
-  //     .send({
-  //       price: '3000000',
-  //       state: 'Lagos',
-  //       city: 'Isale Eko',
-  //       address: '954, Mountain hill',
-  //       type: 'Mini Flat',
-  //       imageUrl: 'https://cloudinary.com/wef84r3nnf',
-  //     })
-  //     .end((err, res) => {
-  //       res.should.have.status(201);
-  //       res.body.should.be.a('object');
-  //       done();
-  //     });
-  // });
+describe('GET /api/v1/property', () => {
+  it('Should get all property ad', (done) => {
+    const req = chai.request(app)
+      .get('/api/v1/property/');
+    req.set('cookie', cookie)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        // res.body.should.be.a('object');
+        done();
+      });
+  });
 });

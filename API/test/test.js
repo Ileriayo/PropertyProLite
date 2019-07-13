@@ -245,6 +245,21 @@ describe('PATCH /api/v1/property/<:property-id>/', () => {
   });
 });
 
+describe('PATCH /api/v1/property/<:property-id>/sold', () => {
+  it('Should mark a property as sold', (done) => {
+    const req = chai.request(app)
+      .patch('/api/v1/property/1/sold');
+    req.set('cookie', cookie)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+});
+
 describe('DELETE /api/v1/property/<:property-id>/', () => {
   it('Should delete an agent\'s property', (done) => {
     const req = chai.request(app)

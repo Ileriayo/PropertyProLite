@@ -72,6 +72,21 @@ class Validate {
     }
     return next();
   }
+
+  static async checkIdParam(req, res, next) {
+    const errors = [];
+    const { params: { id } } = req;
+    errors.push(...checkForEmptyField('Property Id', id));
+    errors.push(...checkFieldPattern('Property Id', id, numberRegex));
+
+    if (errors.length) {
+      return res.status(400).json({
+        status: 'Error: Field(s) require your attention',
+        error: errors,
+      });
+    }
+    return next();
+  }
 }
 
 export default Validate;

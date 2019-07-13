@@ -1,7 +1,7 @@
 import propertyModel from '../models/properties.models';
 
 const {
-  addProperty, getAllProperties, getPropertyById,
+  addProperty, getAllProperties, getPropertyById, deletePropertyById,
 } = propertyModel;
 
 class PropertyController {
@@ -66,6 +66,19 @@ class PropertyController {
       return res.status(200).json({
         status: 'success',
         data: property || [],
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async deletePropertyById(req, res) {
+    try {
+      const { propertyIndex } = req;
+      await deletePropertyById(propertyIndex);
+      return res.status(200).json({
+        status: 'success',
+        data: { message: 'Property has been successfuly deleted', },
       });
     } catch (error) {
       return error;

@@ -36,10 +36,10 @@ describe('POST /api/v1/auth/signup', () => {
       .post('/api/v1/auth/signup')
       .type('form')
       .send({
-        firstName: 'John',
-        lastName: 'Doe',
+        first_name: 'John',
+        last_name: 'Doe',
         email: 'john@gmail.com',
-        phoneNumber: '08123456789',
+        phone_number: '08123456789',
         address: '22 Fosoke Street, S/L, Lagos',
         password: 'mygreatpassword',
       })
@@ -56,10 +56,10 @@ describe('POST /api/v1/auth/signup', () => {
       .post('/api/v1/auth/signup')
       .type('form')
       .send({
-        firstName: 'John',
-        lastName: 'Doe',
+        first_name: 'John',
+        last_name: 'Doe',
         email: 'john !@gmail.com',
-        phoneNumber: '08123456789',
+        phone_number: '08123456789',
         address: '22 Fosoke Street, S/L, Lagos',
         password: 'mygreatpassword',
       })
@@ -75,10 +75,10 @@ describe('POST /api/v1/auth/signup', () => {
       .post('/api/v1/auth/signup')
       .type('form')
       .send({
-        firstName: 'Jo',
-        lastName: 'Do',
+        first_name: 'Jo',
+        last_name: 'Do',
         email: 'john@gmail.com',
-        phoneNumber: '08123456789',
+        phone_number: '08123456789',
         address: '22 Fosoke Street, S/L, Lagos',
         password: 'mygreatpassword',
       })
@@ -174,7 +174,7 @@ describe('POST /api/v1/property', () => {
         city: 'Isale Eko',
         address: '954, Mountain hill',
         type: 'Mini Flat',
-        imageUrl: 'https://cloudinary.com/wef84r3nnf',
+        image_url: 'https://cloudinary.com/wef84r3nnf',
       })
       .end((err, res) => {
         res.should.have.status(201);
@@ -225,19 +225,37 @@ describe('GET /api/v1/property/<:property-id>/', () => {
         done();
       });
   });
+});
 
-  describe('DELETE /api/v1/property/<:property-id>/', () => {
-    it('Should delete an agent\'s property', (done) => {
-      const req = chai.request(app)
-        .delete('/api/v1/property/1');
-      req.set('cookie', cookie)
-        .type('form')
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('object');
-          res.body.should.have.property('data');
-          done();
-        });
-    });
+describe('PATCH /api/v1/property/<:property-id>/', () => {
+  it('Should update a property price', (done) => {
+    const req = chai.request(app)
+      .patch('/api/v1/property/1');
+    req.set('cookie', cookie)
+      .type('form')
+      .send({
+        price: 4000000,
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+});
+
+describe('DELETE /api/v1/property/<:property-id>/', () => {
+  it('Should delete an agent\'s property', (done) => {
+    const req = chai.request(app)
+      .delete('/api/v1/property/1');
+    req.set('cookie', cookie)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
+        done();
+      });
   });
 });

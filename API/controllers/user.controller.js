@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import userModel from '../models/users.models';
 import CheckPassword from '../helpers/checkPassword';
 import HashPassword from '../helpers/hashPassword';
@@ -11,16 +12,16 @@ const { checkPassword } = CheckPassword;
 class UserController {
   static async signUp(req, res) {
     const {
-      email, firstName, lastName, password, phoneNumber, address,
+      email, first_name, last_name, password, phone_number, address,
     } = req.body;
     const hashedPassword = await hashPassword(password);
     const newUser = {
       id: await getAllUsers().length + 1,
       email,
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       password: hashedPassword,
-      phoneNumber,
+      phone_number,
       address,
       isAdmin: false,
     };
@@ -32,7 +33,7 @@ class UserController {
       status: 'success',
       message: 'Sign up successful',
       data: {
-        token, id, email, firstName, lastName,
+        token, id, email, first_name, last_name,
       },
     });
   }
@@ -46,14 +47,14 @@ class UserController {
         error: 'Login unsuccessful',
       });
     }
-    const { id, firstName, lastName } = validUser;
+    const { id, first_name, last_name } = validUser;
     const token = await tokenizer({ id });
     res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
     return res.status(200).json({
       status: 'success',
       message: 'Sign in successful',
       data: {
-        token, id, email, firstName, lastName,
+        token, id, email, first_name, last_name,
       },
     });
   }

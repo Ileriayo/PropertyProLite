@@ -1,16 +1,22 @@
+/* eslint-disable camelcase */
 import propertyModel from '../models/properties.models';
 
 const {
-  addProperty, getAllProperties, getPropertyById, deletePropertyById,
+  addProperty,
+  getAllProperties,
+  getPropertyById,
+  deletePropertyById,
+  updateProperty,
+  findPropertyIndex,
 } = propertyModel;
 
 class PropertyController {
   static async createProperty(req, res) {
     const {
       body: {
-        price, state, city, address, type, imageUrl,
+        price, state, city, address, type, image_url,
       },
-      user: { email, phoneNumber },
+      user: { email, phone_number },
     } = req;
     try {
       const property = {
@@ -21,10 +27,10 @@ class PropertyController {
         city,
         address,
         price,
-        createdOn: new Date().toLocaleString(),
-        imageUrl,
-        ownerEmail: email,
-        ownerPhoneNumber: phoneNumber,
+        created_on: new Date().toLocaleString(),
+        image_url,
+        owner_email: email,
+        owner_phone_number: phone_number,
       };
 
       await addProperty(property);
@@ -38,8 +44,8 @@ class PropertyController {
           city,
           address,
           price,
-          createdOn: property.createdOn,
-          imageUrl,
+          created_on: property.created_on,
+          image_url,
         },
       });
     } catch (error) {
@@ -78,7 +84,41 @@ class PropertyController {
       await deletePropertyById(propertyIndex);
       return res.status(200).json({
         status: 'success',
-        data: { message: 'Property has been successfuly deleted', },
+        data: { message: 'Property has been successfuly deleted' },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async updateProperty(req, res) {
+    try {
+      const { params: { id }, body: { price } } = req;
+      const propertyIndex = await findPropertyIndex(id);
+      await updateProperty(propertyIndex, price);
+      const property = getPropertyById(id);
+      const {
+        status,
+        type,
+        state,
+        city,
+        address,
+        created_on,
+        image_url,
+      } = property;
+      return res.status(200).json({
+        status: 'success',
+        data: {
+          id,
+          status,
+          type,
+          state,
+          city,
+          address,
+          price,
+          created_on,
+          image_url,
+        },
       });
     } catch (error) {
       return error;

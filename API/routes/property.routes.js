@@ -7,9 +7,9 @@ import MapPropOwner from '../middlewares/mapPropOwner';
 
 const { auth } = Authenticate;
 const {
-  createProperty, getAllProperties, getPropertyById, deletePropertyById,
+  createProperty, getAllProperties, getPropertyById, updateProperty, deletePropertyById,
 } = PropertyController;
-const { checkProperty } = Validate;
+const { checkProperty, checkUpdatePrice } = Validate;
 const { findPropertyIndex } = FindPropertyIndex;
 const { mapPropOwner } = MapPropOwner;
 
@@ -18,6 +18,7 @@ const propertyRouter = express.Router();
 propertyRouter.post('/property', auth, checkProperty, createProperty);
 propertyRouter.get('/property', auth, getAllProperties);
 propertyRouter.get('/property/:id', auth, getPropertyById);
+propertyRouter.patch('/property/:id', auth, mapPropOwner, checkUpdatePrice, updateProperty);
 propertyRouter.delete('/property/:id', auth, mapPropOwner, findPropertyIndex, deletePropertyById);
 
 export default propertyRouter;

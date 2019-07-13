@@ -5,9 +5,10 @@ const {
   addProperty,
   getAllProperties,
   getPropertyById,
-  deletePropertyById,
+  deleteProperty,
   updateProperty,
   findPropertyIndex,
+  markPropertySold,
 } = propertyModel;
 
 class PropertyController {
@@ -78,10 +79,10 @@ class PropertyController {
     }
   }
 
-  static async deletePropertyById(req, res) {
+  static async deleteProperty(req, res) {
     try {
       const { propertyIndex } = req;
-      await deletePropertyById(propertyIndex);
+      await deleteProperty(propertyIndex);
       return res.status(200).json({
         status: 'success',
         data: { message: 'Property has been successfuly deleted' },
@@ -96,6 +97,40 @@ class PropertyController {
       const { params: { id }, body: { price } } = req;
       const propertyIndex = await findPropertyIndex(id);
       await updateProperty(propertyIndex, price);
+      const property = getPropertyById(id);
+      const {
+        status,
+        type,
+        state,
+        city,
+        address,
+        created_on,
+        image_url,
+      } = property;
+      return res.status(200).json({
+        status: 'success',
+        data: {
+          id,
+          status,
+          type,
+          state,
+          city,
+          address,
+          price,
+          created_on,
+          image_url,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async markPropertySold(req, res) {
+    try {
+      const { params: { id }, body: { price } } = req;
+      const propertyIndex = await findPropertyIndex(id);
+      await markPropertySold(propertyIndex);
       const property = getPropertyById(id);
       const {
         status,

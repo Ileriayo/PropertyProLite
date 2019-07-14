@@ -29,7 +29,6 @@ class UserController {
     await addUser(newUser);
     const token = await tokenizer({ id });
     req.headers.token = token;
-    console.log('From User Controller', req.headers);
     res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
     return res.status(201).json({
       status: 'success',

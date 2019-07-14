@@ -7,7 +7,8 @@ const { decodeToken } = DecodeToken;
 export default class Authenticate {
   static async auth(req, res, next) {
     const { token } = req.cookies || req.headers || req.body;
-    console.log(req.body);
+    console.log('Token:', token);
+    console.log('Request Body:', req.body);
     if (!token) {
       return res.status(401).json({
         status: 'error',

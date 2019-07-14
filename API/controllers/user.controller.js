@@ -28,7 +28,6 @@ class UserController {
     const { id } = newUser;
     await addUser(newUser);
     const token = await tokenizer({ id });
-    // req.headers.token = token;
     res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
     return res.status(201).json({
       status: 'success',
@@ -50,7 +49,6 @@ class UserController {
     }
     const { id, first_name, last_name } = validUser;
     const token = await tokenizer({ id });
-    // req.headers.token = token;
     res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
     return res.status(200).json({
       status: 'success',

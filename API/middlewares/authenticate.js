@@ -7,8 +7,8 @@ const { decodeToken } = DecodeToken;
 export default class Authenticate {
   static async auth(req, res, next) {
     const { token } = req.cookies;
-    // req.headers.token = token;
-    console.log('Request Headers From Auth Middleware: ', req.headers);
+    // console.log('Request Headers From Auth Middleware: ', req.headers);
+    console.log(req.body);
     // if (!token) {
     //   return res.status(401).json({
     //     status: 'error',
@@ -24,8 +24,8 @@ export default class Authenticate {
       return next();
     } catch (error) {
       return res.status(401).json({
-        status: 'error: authentication failed',
-        data: error,
+        status: 'error',
+        error,
       });
     }
   }

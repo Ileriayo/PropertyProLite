@@ -23,7 +23,7 @@ export default class Authenticate {
       req.user = user;
       return next();
     } catch (error) {
-      return res.status(401).error({
+      return res.status(401).json({
         status: 'error: authentication failed',
         data: error,
       });

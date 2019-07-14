@@ -20,7 +20,7 @@ const { mapPropOwner } = MapPropOwner;
 
 const propertyRouter = express.Router();
 
-propertyRouter.post('/property', auth, checkProperty, createProperty);
+propertyRouter.post('/property', auth, createProperty);
 propertyRouter.get('/property', auth, getAllProperties);
 propertyRouter.get('/property/:id', auth, getPropertyById);
 propertyRouter.patch('/property/:id', auth, checkIdParam, mapPropOwner, checkUpdatePrice, updateProperty);

@@ -53,16 +53,16 @@ class Validate {
 
   static async checkProperty(req, res, next) {
     const errors = [];
-    const {
-      price, state, city, address, type, image_url,
-    } = req.body;
-    errors.push(...checkForEmptyField('Price', price));
-    errors.push(...checkFieldPattern('Price', price, numberRegex));
-    errors.push(...checkForEmptyField('State', state));
-    errors.push(...checkForEmptyField('City', city));
-    errors.push(...checkForEmptyField('Address', address));
-    errors.push(...checkForEmptyField('Type', type));
-    errors.push(...checkForEmptyField('Image', image_url));
+    // const {
+    //   price, state, city, address, type, image_url,
+    // } = req.body;
+    // errors.push(...checkForEmptyField('Price', price));
+    // errors.push(...checkFieldPattern('Price', price, numberRegex));
+    // errors.push(...checkForEmptyField('State', state));
+    // errors.push(...checkForEmptyField('City', city));
+    // errors.push(...checkForEmptyField('Address', address));
+    // errors.push(...checkForEmptyField('Type', type));
+    // errors.push(...checkForEmptyField('Image', image_url));
 
     if (errors.length) {
       return res.status(400).json({

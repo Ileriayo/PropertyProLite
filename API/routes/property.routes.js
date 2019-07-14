@@ -14,13 +14,13 @@ const {
   deleteProperty,
   markPropertySold,
 } = PropertyController;
-const { checkProperty, checkUpdatePrice, checkIdParam } = Validate;
+const { /* checkProperty, */ checkUpdatePrice, checkIdParam } = Validate;
 const { findPropertyIndex } = FindPropertyIndex;
 const { mapPropOwner } = MapPropOwner;
 
 const propertyRouter = express.Router();
 
-propertyRouter.post('/property', auth, checkProperty, createProperty);
+propertyRouter.post('/property', auth, /* checkProperty, */ createProperty);
 propertyRouter.get('/property', auth, getAllProperties);
 propertyRouter.get('/property/:id', auth, getPropertyById);
 propertyRouter.patch('/property/:id', auth, checkIdParam, mapPropOwner, checkUpdatePrice, updateProperty);

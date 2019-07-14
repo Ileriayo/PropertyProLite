@@ -6,15 +6,14 @@ const { decodeToken } = DecodeToken;
 
 export default class Authenticate {
   static async auth(req, res, next) {
-    const { token } = req.cookies;
-    // console.log('Request Headers From Auth Middleware: ', req.headers);
+    const { token } = req.cookies || req.headers || req.body;
     console.log(req.body);
-    // if (!token) {
-    //   return res.status(401).json({
-    //     status: 'error',
-    //     error: 'Unauthenticated!',
-    //   });
-    // }
+    if (!token) {
+      return res.status(401).json({
+        status: 'error',
+        error: 'Unauthenticated!',
+      });
+    }
 
     try {
       let user = await decodeToken(token);

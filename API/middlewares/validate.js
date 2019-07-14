@@ -10,7 +10,6 @@ const { checkForEmptyField, checkFieldPattern, checkFieldLength } = ValidationHe
 class Validate {
   static async checkRequestBody(req, res, next) {
     const errors = [];
-    console.log('Request Body for checkRequestBody():', req.body);
     const {
       first_name, last_name, email, password, phone_number, address,
     } = req.body;
@@ -39,7 +38,6 @@ class Validate {
 
   static async checkUpdatePrice(req, res, next) {
     const errors = [];
-    console.log('Request Body for checkUpdatePrice():', req.body);
     const { price } = req.body;
     errors.push(...checkForEmptyField('Price', price));
     errors.push(...checkFieldPattern('Price', price, numberRegex));
@@ -55,17 +53,16 @@ class Validate {
 
   static async checkProperty(req, res, next) {
     const errors = [];
-    console.log('Request Body for checkProperty():', req.body);
-    const {
-      price, state, city, address, type, image_url,
-    } = req.body;
-    errors.push(...checkForEmptyField('Price', price));
-    errors.push(...checkFieldPattern('Price', price, numberRegex));
-    errors.push(...checkForEmptyField('State', state));
-    errors.push(...checkForEmptyField('City', city));
-    errors.push(...checkForEmptyField('Address', address));
-    errors.push(...checkForEmptyField('Type', type));
-    errors.push(...checkForEmptyField('Image', image_url));
+    // const {
+    //   price, state, city, address, type, image_url,
+    // } = req.body;
+    // errors.push(...checkForEmptyField('Price', price));
+    // errors.push(...checkFieldPattern('Price', price, numberRegex));
+    // errors.push(...checkForEmptyField('State', state));
+    // errors.push(...checkForEmptyField('City', city));
+    // errors.push(...checkForEmptyField('Address', address));
+    // errors.push(...checkForEmptyField('Type', type));
+    // errors.push(...checkForEmptyField('Image', image_url));
 
     if (errors.length) {
       return res.status(400).json({
@@ -78,7 +75,6 @@ class Validate {
 
   static async checkIdParam(req, res, next) {
     const errors = [];
-    console.log('Request Body for checkProperty():', req.body);
     const { params: { id } } = req;
     errors.push(...checkForEmptyField('Property Id', id));
     errors.push(...checkFieldPattern('Property Id', id, numberRegex));

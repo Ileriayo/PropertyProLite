@@ -1,0 +1,423 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "PropertyPro",
+    "description": "Collection for Property Pro Lite API requests.\nProperty Pro Lite is a platform where people can create and/or search properties for sale or rent.",
+    "contact": {}
+  },
+  "host": "propertyproo.herokuapp.com",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "description": "New users can sign up",
+        "summary": "Become a registered user",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "AuthSignupPost",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sign up successful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "description": "TODO: Add Description",
+        "summary": "Sign in",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "AuthSigninPost",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SigninRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login Successful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/property": {
+      "post": {
+        "description": "Users (Agents) can create a property advert",
+        "summary": "Create property ad",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "PropertyPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Property"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Proeperty Created Successfuly",
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "get": {
+        "description": "Users can view all property adverts",
+        "summary": "Get all properties",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "PropertyGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Operation Successful",
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/property/{property-id}/sold": {
+      "patch": {
+        "description": "Agents can mark their property as sold",
+        "summary": "Mark property as sold",
+        "tags": [
+          "Misc"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "property-id",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "The Property ID"
+          }
+        ],
+        "operationId": "Property1SoldPatch",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation successful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/property/{property-id}": {
+      "get": {
+        "description": "Users can view the details of a property advert",
+        "summary": "View one property (by id)",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Property1Get",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "property-id",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "The Property ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "description": "Agents can update the details (price) of a property",
+        "summary": "Update property",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Property1Patch",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "property-id",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "The Property ID"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UpdatepropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "Agents can delete their property advert(s)",
+        "summary": "Delete a property",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Property1Delete",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "property-id",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "The Property ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "title": "User",
+      "example": {
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john@gmail.com",
+        "phone_number": "08123456789",
+        "address": "22 Fosoke Street, S/L, Lagos",
+        "password": "mygreatpassword"
+      },
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name",
+        "email",
+        "phone_number",
+        "address",
+        "password"
+      ]
+    },
+    "SigninRequest": {
+      "title": "SigninRequest",
+      "example": {
+        "email": "john@gmail.com",
+        "password": "mygreatpassword"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "Property": {
+      "title": "Property",
+      "example": {
+        "price": 3000000,
+        "state": "Lagos",
+        "city": "Isale Eko",
+        "address": "954, Mountain hill",
+        "type": "Mini Flat",
+        "image_url": "https://cloudinary.com/wef84r3nnf"
+      },
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "image_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "price",
+        "state",
+        "city",
+        "address",
+        "type",
+        "image_url"
+      ]
+    },
+    "UpdatepropertyRequest": {
+      "title": "UpdatepropertyRequest",
+      "example": {
+        "price": "5000000"
+      },
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "price"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

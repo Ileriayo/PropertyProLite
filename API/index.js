@@ -4,7 +4,9 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import 'babel-polyfill';
+import swaggerUi from 'swagger-ui-express';
 
+import swaggerDoc from './api-docs/propertypro_api';
 import Cors from './middlewares/cors';
 import ErrorHandler from './middlewares/errorHandler';
 import userRoutes from './routes/user.routes';
@@ -31,6 +33,7 @@ app.get('/', (req, res) => res.send('Welcome to PropertyPro'));
 
 app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/', propertyRoutes);
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Error Handler
 app.use(errorHandler404);

@@ -1,13 +1,14 @@
-import userModel from '../models/users.models';
+import userDBModel from '../models/usersDB.models';
 
-const { getUserByEmail } = userModel;
+const { getUserByEmail } = userDBModel;
 
 export default class CheckEmail {
   static async onSignUp(req, res, next) {
     const { body: { email } } = req;
     try {
-      const existinguser = await getUserByEmail(email);
-      if (existinguser) {
+      const result = await getUserByEmail(email);
+      // console.log(result);
+      if (result.length > 0) {
         return res.status(409).json({
           status: 'conflict',
           error: 'Email already exists',

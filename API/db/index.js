@@ -12,7 +12,6 @@ class Query {
   static async query(text, params) {
     try {
       const result = await pool.query(text, params);
-      console.log(result.rows);
       return result.rows;
     } catch (err) {
       return err;

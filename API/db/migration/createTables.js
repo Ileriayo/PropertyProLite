@@ -13,7 +13,7 @@ const createUserTable = `
           phone_number VARCHAR(11) NOT NULL,
           address VARCHAR NOT NULL,
           is_admin BOOLEAN NOT NULL
-        )`;
+        );`;
 
 const createPropertiesTable = `
   CREATE TABLE IF NOT EXISTS
@@ -28,7 +28,7 @@ const createPropertiesTable = `
         type VARCHAR(128) NOT NULL,
         created_on TIMESTAMP DEFAULT NOW(),
         image_url VARCHAR(512) NOT NULL
-      )`;
+      );`;
 
 (async () => {
   try {

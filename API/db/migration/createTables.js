@@ -35,6 +35,6 @@ const createPropertiesTable = `
     await query(createUserTable);
     await query(createPropertiesTable);
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 })();

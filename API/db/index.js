@@ -8,13 +8,16 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-(async () => {
-  const client = await pool.connect();
-  try {
-    console.log('Connection to database established');
-  } finally {
-    client.release();
+class Query {
+  static async query(text, params) {
+    try {
+      const result = await pool.query(text, params);
+      console.log(result.rows);
+      return result.rows;
+    } catch (err) {
+      return err;
+    }
   }
-})().catch(e => console.error(e.stack));
+}
 
-export default pool;
+export default Query;

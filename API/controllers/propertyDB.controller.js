@@ -83,9 +83,7 @@ class PropertyController {
   static async updateProperty(req, res) {
     try {
       const { params: { id }, body: { price } } = req;
-      const propertyIndex = await findPropertyIndex(id);
-      await updateProperty(propertyIndex, price);
-      const property = getPropertyById(id);
+      const property = await updateProperty(`price = '${price}'`, `id = '${id}'`);
       const {
         status,
         type,
@@ -94,7 +92,7 @@ class PropertyController {
         address,
         created_on,
         image_url,
-      } = property;
+      } = property[0];
       return res.status(200).json({
         status: 'success',
         data: {

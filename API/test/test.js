@@ -7,6 +7,7 @@ chai.use(chaiHttp);
 chai.should();
 
 let authToken;
+let propertyId;
 const testUser = {
   email: `yr${(Math.random() * 20)}n@gmail.com`,
   password: 'awesomepassword124',
@@ -122,21 +123,6 @@ describe('POST /api/v1/auth/signin', () => {
       });
   });
 
-  // it('Should return 401 for wrong password', (done) => {
-  //   chai.request(app)
-  //     .post('/api/v1/auth/signin')
-  //     .type('form')
-  //     .send({
-  //       email: testUser.email,
-  //       password: 'xxxxxxxxxxx',
-  //     })
-  //     .end((err, res) => {
-  //       res.should.have.status(401);
-  //       res.body.should.be.a('object');
-  //       done();
-  //     });
-  // });
-
   it('Should check for required fields', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
@@ -161,7 +147,6 @@ describe('POST /api/v1/auth/signin', () => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         authToken = res.body.data.token;
-        // cookie = res.headers['set-cookie'];
         done();
       });
   });
@@ -184,6 +169,7 @@ describe('POST /api/v1/property', () => {
       .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.a('object');
+        propertyId = res.body.data.id;
         done();
       });
   });
@@ -192,7 +178,7 @@ describe('POST /api/v1/property', () => {
 describe('GET /api/v1/property', () => {
   it('Should get all property ad', (done) => {
     const req = chai.request(app)
-      .get('/api/v1/property/');
+      .get('/api/v1/property');
     req.set('Authorization', authToken)
       .type('form')
       .end((err, res) => {
@@ -207,7 +193,7 @@ describe('GET /api/v1/property', () => {
 describe('GET /api/v1/property/<:property-id>/', () => {
   it('Should get one property by id', (done) => {
     const req = chai.request(app)
-      .get('/api/v1/property/1');
+      .get(`/api/v1/property/${propertyId}`);
     req.set('Authorization', authToken)
       .type('form')
       .end((err, res) => {
@@ -232,10 +218,10 @@ describe('GET /api/v1/property/<:property-id>/', () => {
   });
 });
 
-describe('PATCH /api/v1/property/<:property-id>/', () => {
+describe('PATCH /api/v1/property/<:property-id>', () => {
   it('Should update a property price', (done) => {
     const req = chai.request(app)
-      .patch('/api/v1/property/1');
+      .patch(`/api/v1/property/${propertyId}`);
     req.set('Authorization', authToken)
       .type('form')
       .send({
@@ -253,7 +239,8 @@ describe('PATCH /api/v1/property/<:property-id>/', () => {
 describe('PATCH /api/v1/property/<:property-id>/sold', () => {
   it('Should mark a property as sold', (done) => {
     const req = chai.request(app)
-      .patch('/api/v1/property/1/sold');
+      .patch('/api/v1/property/<:property-id>/sold');
+      // .patch(`/api/v1/property/${propertyId}/sold`);
     req.set('Authorization', authToken)
       .type('form')
       .end((err, res) => {
@@ -269,6 +256,7 @@ describe('DELETE /api/v1/property/<:property-id>/', () => {
   it('Should delete an agent\'s property', (done) => {
     const req = chai.request(app)
       .delete('/api/v1/property/1');
+      // .delete(`/api/v1/property/${propertyId}`);
     req.set('Authorization', authToken)
       .type('form')
       .end((err, res) => {

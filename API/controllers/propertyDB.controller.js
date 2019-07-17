@@ -115,9 +115,10 @@ class PropertyController {
   static async markPropertySold(req, res) {
     try {
       const { params: { id }, body: { price } } = req;
-      const propertyIndex = await findPropertyIndex(id);
-      await markPropertySold(propertyIndex);
-      const property = getPropertyById(id);
+      // const propertyIndex = await findPropertyIndex(id);
+      // await markPropertySold(propertyIndex);
+      // const property = getPropertyById(id);
+      const property = await updateProperty('status = \'Sold\'', `id = '${id}'`);
       const {
         status,
         type,

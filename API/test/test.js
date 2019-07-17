@@ -35,15 +35,6 @@ describe('GET /', () => {
 });
 
 describe('POST /api/v1/auth/signup', () => {
-  beforeEach((done) => {
-    chai.request(app)
-      .get('/')
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('object');
-        done();
-      });
-  });
   it('Should sign up a new user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')

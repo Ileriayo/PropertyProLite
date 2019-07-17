@@ -14,18 +14,21 @@ class UserController {
     const {
       email, first_name, last_name, password, phone_number, address,
     } = req.body;
-    const hashedPassword = await hashPassword(password);
-    const newUser = await addUser(`'${email}', '${first_name}', '${last_name}', '${hashedPassword}', '${phone_number}', '${address}', false`);
-    const { id } = newUser[0];
-    const token = await tokenizer({ id });
-    res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
-    return res.status(201).json({
-      status: 'success',
-      message: 'Sign up successful',
-      data: {
-        token, id, email, first_name, last_name,
-      },
-    });
+    try {
+      const hashedPassword = await hashPassword(password);
+      const newUser = await addUser(`'${email}', '${first_name}', '${last_name}', '${hashedPassword}', '${phone_number}', '${address}', false`);
+      const { id } = newUser[0];
+      const token = await tokenizer({ id });
+      return res.status(201).json({
+        status: 'success',
+        message: 'Sign up successful',
+        data: {
+          token, id, email, first_name, last_name,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
   }
 
   static async signIn(req, res) {
@@ -37,9 +40,8 @@ class UserController {
         error: 'Login unsuccessful',
       });
     }
-    const { id, first_name, last_name } = validUser;
+    const { id, first_name, last_name } = validUser[0];
     const token = await tokenizer({ id });
-    res.cookie('token', token, { expires: new Date(Date.now() + 3600000), httpOnly: true });
     return res.status(200).json({
       status: 'success',
       message: 'Sign in successful',

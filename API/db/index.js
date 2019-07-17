@@ -4,10 +4,6 @@ import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
-/* CONNECTION TO PRODUCTION DB */
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
 
 /* CONNECTION TO LOCAL DB */
 // const pool = new Pool({
@@ -17,6 +13,11 @@ const pool = new Pool({
 //   password: process.env.PG_PASSWORD,
 //   port: process.env.PG_PORT,
 // });
+
+/* CONNECTION TO PRODUCTION DB */
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
 class Query {
   static async query(text, params) {

@@ -239,8 +239,7 @@ describe('PATCH /api/v1/property/<:property-id>', () => {
 describe('PATCH /api/v1/property/<:property-id>/sold', () => {
   it('Should mark a property as sold', (done) => {
     const req = chai.request(app)
-      .patch('/api/v1/property/<:property-id>/sold');
-      // .patch(`/api/v1/property/${propertyId}/sold`);
+      .patch(`/api/v1/property/${propertyId}/sold`);
     req.set('Authorization', authToken)
       .type('form')
       .end((err, res) => {

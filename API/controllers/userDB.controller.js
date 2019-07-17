@@ -15,7 +15,7 @@ class UserController {
     try {
       const hashedPassword = await hashPassword(password);
       const newUser = await addUser(`'${email}', '${first_name}', '${last_name}', '${hashedPassword}', '${phone_number}', '${address}', false`);
-      // console.log('This user just signed up:', newUser);
+      console.log('This user just signed up:', newUser);
       const { id } = newUser[0];
       const token = await tokenizer({ id });
       return res.status(201).json({

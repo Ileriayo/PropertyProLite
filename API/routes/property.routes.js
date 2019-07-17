@@ -9,7 +9,7 @@ import MapPropOwner from '../middlewares/mapPropOwner';
 const { auth } = Authenticate;
 const {
   // createProperty,
-  getAllProperties,
+  // getAllProperties,
   getPropertyById,
   updateProperty,
   deleteProperty,
@@ -17,6 +17,7 @@ const {
 } = PropertyController;
 const {
   createProperty,
+  getAllProperties,
 } = PropertyDBController;
 const { /* checkProperty, */ checkUpdatePrice, checkIdParam } = Validate;
 const { findPropertyIndex } = FindPropertyIndex;

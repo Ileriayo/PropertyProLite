@@ -1,19 +1,14 @@
 /* eslint-disable camelcase */
-import propertyModel from '../models/properties.models';
 import propertyDBModel from '../models/propertiesDB.models';
 
 const {
-  // addProperty,
+  addProperty,
   getAllProperties,
   getPropertyById,
   deleteProperty,
   updateProperty,
   findPropertyIndex,
   markPropertySold,
-} = propertyModel;
-
-const {
-  addProperty,
 } = propertyDBModel;
 
 class PropertyController {

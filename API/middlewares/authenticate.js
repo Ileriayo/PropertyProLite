@@ -8,9 +8,7 @@ export default class Authenticate {
   static async auth(req, res, next) {
     try {
       let token = req.headers.token || req.headers.authorization;
-      let user = await decodeToken(token);
-      const { id } = user;
-      if (!token || !id) {
+      if (!token) {
         return res.status(401).json({
           status: 'error',
           error: 'Unauthorized!',
@@ -19,9 +17,10 @@ export default class Authenticate {
       if (token.startsWith('Bearer ')) {
         token = token.slice(7, token.length).trimLeft();
       }
-      // let user = await decodeToken(token);
-      // const { id } = user;
-      user = await getUserById(id);
+      const tokenDetails = await decodeToken(token);
+      const { id } = tokenDetails;
+      const user = await getUserById(id);
+      // console.log('This USER: %s has token: %s', user, token);
       req.user = user;
       return next();
     } catch (error) {

@@ -8,7 +8,7 @@ chai.should();
 
 let authToken;
 const testUser = {
-  email: `a1a${Math.random(10)}a@gmail.com`,
+  email: `yr${(Math.random() * 20)}n@gmail.com`,
   password: 'awesomepassword124',
 };
 
@@ -35,6 +35,15 @@ describe('GET /', () => {
 });
 
 describe('POST /api/v1/auth/signup', () => {
+  beforeEach((done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
   it('Should sign up a new user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -112,7 +121,7 @@ describe('POST /api/v1/auth/signin', () => {
       .post('/api/v1/auth/signin')
       .type('form')
       .send({
-        email: 'no-user@gmail.com',
+        email: `fake${Math.random(4)}@fake.com`,
         password: 'mygreatpassword',
       })
       .end((err, res) => {

@@ -11,13 +11,14 @@ const {
   // createProperty,
   // getAllProperties,
   getPropertyById,
-  updateProperty,
+  // updateProperty,
   deleteProperty,
   markPropertySold,
 } = PropertyController;
 const {
   createProperty,
   getAllProperties,
+  updateProperty,
 } = PropertyDBController;
 const { /* checkProperty, */ checkUpdatePrice, checkIdParam } = Validate;
 const { findPropertyIndex } = FindPropertyIndex;

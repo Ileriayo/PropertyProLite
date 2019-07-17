@@ -19,15 +19,16 @@ const createPropertiesTable = `
   CREATE TABLE IF NOT EXISTS
         properties(
         id SERIAL PRIMARY KEY,
-        owner INT REFERENCES users(id),
         status VARCHAR(128) NOT NULL,
-        price  NUMERIC(25,2) NOT NULL,
+        price FLOAT8 NOT NULL,
         state VARCHAR(128) NOT NULL,
         city VARCHAR(128) NOT NULL,
         address VARCHAR(128) NOT NULL,
         type VARCHAR(128) NOT NULL,
-        created_on TIMESTAMP DEFAULT NOW(),
-        image_url VARCHAR(512) NOT NULL
+        created_on VARCHAR(128) NOT NULL,
+        image_url VARCHAR(512) NOT NULL,
+        owner_email VARCHAR(128) NOT NULL,
+        owner_phone_number VARCHAR(128) NOT NULL
       );`;
 
 (async () => {

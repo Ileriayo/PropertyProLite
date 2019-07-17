@@ -7,8 +7,6 @@ const {
   getPropertyById,
   deleteProperty,
   updateProperty,
-  findPropertyIndex,
-  markPropertySold,
 } = propertyDBModel;
 
 class PropertyController {
@@ -57,10 +55,10 @@ class PropertyController {
   static async getPropertyById(req, res) {
     try {
       const { params: { id } } = req;
-      const property = getPropertyById(id);
+      const property = await getPropertyById(`id = ${id}`);
       return res.status(200).json({
         status: 'success',
-        data: property || [],
+        data: property,
       });
     } catch (error) {
       return error;
@@ -115,9 +113,6 @@ class PropertyController {
   static async markPropertySold(req, res) {
     try {
       const { params: { id }, body: { price } } = req;
-      // const propertyIndex = await findPropertyIndex(id);
-      // await markPropertySold(propertyIndex);
-      // const property = getPropertyById(id);
       const property = await updateProperty('status = \'Sold\'', `id = '${id}'`);
       const {
         status,

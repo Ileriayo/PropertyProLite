@@ -72,7 +72,7 @@ class PropertyController {
       const property = getPropertyById(id);
       return res.status(200).json({
         status: 'success',
-        data: property || [],
+        data: property,
       });
     } catch (error) {
       return error;

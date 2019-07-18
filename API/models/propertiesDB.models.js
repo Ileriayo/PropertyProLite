@@ -7,6 +7,7 @@ const {
   select,
   selectWhere,
   update,
+  deleteFromDB,
 } = SQLHelpers;
 
 const propertyModel = {
@@ -15,16 +16,8 @@ const propertyModel = {
                   owner_email, owner_phone_number)`, values)),
   getAllProperties: () => query(select('*', 'properties')),
   getPropertyById: id => query(selectWhere('*', 'properties', id)),
-  // findPropertyIndex: id => propertyModel.list.findIndex(property => property.id.toString() === id),
-  // deleteProperty: propertyIndex => propertyModel.list.splice(propertyIndex, 1),
+  deleteProperty: id => query(deleteFromDB('properties', id)),
   updateProperty: (price, id) => query(update('properties', price, id)),
-  // (propertyIndex, newPrice) => {
-  //   propertyModel.list[propertyIndex].price = newPrice;
-  // },
-  // markPropertySold: (propertyIndex) => {
-  //   propertyModel.list[propertyIndex].status = 'sold';
-  // },
-  // list: [],
 };
 
 export default propertyModel;

@@ -67,8 +67,8 @@ class PropertyController {
 
   static async deleteProperty(req, res) {
     try {
-      const { propertyIndex } = req;
-      await deleteProperty(propertyIndex);
+      const { params: { id } } = req;
+      await deleteProperty(`id = ${id}`);
       return res.status(200).json({
         status: 'success',
         data: { message: 'Property has been successfuly deleted' },
@@ -122,7 +122,7 @@ class PropertyController {
         address,
         created_on,
         image_url,
-      } = property;
+      } = property[0];
       return res.status(200).json({
         status: 'success',
         data: {

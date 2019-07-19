@@ -7,6 +7,7 @@ const {
   getPropertyById,
   deleteProperty,
   updateProperty,
+  getPropertiesByType,
 } = propertyDBModel;
 
 class PropertyController {
@@ -43,7 +44,11 @@ class PropertyController {
 
   static async getAllProperties(req, res) {
     try {
-      const allProperties = await getAllProperties();
+      let allProperties;
+      if (req.query.type) {
+        allProperties = await getPropertiesByType(`type = '${req.query.type}'`);
+      } else allProperties = await getAllProperties();
+
       return res.status(200).json({
         status: 'success',
         data: allProperties,
@@ -57,6 +62,19 @@ class PropertyController {
     try {
       const { params: { id } } = req;
       const property = await getPropertyById(`id = ${id}`);
+      return res.status(200).json({
+        status: 'success',
+        data: property,
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async getPropertyByType(req, res) {
+    try {
+      const { body: type } = req;
+      const property = await getPropertyById(`type = ${type}`);
       return res.status(200).json({
         status: 'success',
         data: property,

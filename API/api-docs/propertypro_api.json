@@ -6,11 +6,11 @@
     "description": "Collection for Property Pro Lite API requests.\nProperty Pro Lite is a platform where people can create and/or search properties for sale or rent.",
     "contact": {}
   },
-  "host": "propertyproo.herokuapp.com",
+  "host": "localhost:3000",
   "basePath": "/api/v1",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "consumes": [
     "application/json"
@@ -294,6 +294,13 @@
           }
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
     }
   },
   "definitions": {

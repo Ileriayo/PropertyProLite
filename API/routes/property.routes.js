@@ -3,7 +3,13 @@ import PropertyDBController from '../controllers/propertyDB.controller';
 import Authenticate from '../middlewares/authenticate';
 import Validate from '../middlewares/validate';
 import MapPropOwner from '../middlewares/mapPropOwner';
+import ImageHandler from '../middlewares/imageHandler';
 
+import { CloudinaryConfig } from '../utils/cloudinaryConfig';
+import { multerUploads } from '../utils/multerConfig';
+
+const { cloudinaryConfig } = CloudinaryConfig;
+const { imageHandler } = ImageHandler;
 const { auth } = Authenticate;
 
 const {
@@ -14,12 +20,12 @@ const {
   getPropertyById,
   deleteProperty,
 } = PropertyDBController;
-const { /* checkProperty, */ checkUpdatePrice, checkIdParam } = Validate;
+const { checkProperty, checkUpdatePrice, checkIdParam } = Validate;
 const { mapPropOwner } = MapPropOwner;
 
 const propertyRouter = express.Router();
 
-propertyRouter.post('/property', auth, /* checkProperty, */ createProperty);
+propertyRouter.post('/property', auth, multerUploads, checkProperty, cloudinaryConfig, imageHandler, createProperty);
 propertyRouter.get('/property', auth, getAllProperties);
 propertyRouter.get('/property/:id', auth, checkIdParam, getPropertyById);
 propertyRouter.patch('/property/:id', auth, checkIdParam, mapPropOwner, checkUpdatePrice, updateProperty);

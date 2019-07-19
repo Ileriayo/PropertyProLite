@@ -33,7 +33,7 @@ app.get('/', (req, res) => res.send('Welcome to PropertyPro'));
 
 app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/', propertyRoutes);
-app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Error Handler
 app.use(errorHandler404);

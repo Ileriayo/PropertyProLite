@@ -1,7 +1,7 @@
 // import cloud from '../utils/cloudinaryConfig';
 // import multerUpload from '../utils/multerConfig';
 import { dataUri } from '../utils/multerConfig';
-import { CloudinaryConfig, uploader } from '../utils/cloudinaryConfig';
+import { uploader } from '../utils/cloudinaryConfig';
 // import { uploader } from '../utils/cloudinaryConfig';
 
 class ImageHandler {
@@ -10,7 +10,7 @@ class ImageHandler {
       if (req.file && req.file.mimetype.startsWith('image/')) {
         let file;
         if (req.file) {
-          file = dataUri(req).content;
+          file = await dataUri(req).content;
           const result = await uploader.upload(file);
           req.body.image_url = result.url;
         }

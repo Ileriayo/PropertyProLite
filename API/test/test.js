@@ -174,7 +174,7 @@ describe('POST /api/v1/property', () => {
       });
   });
 
-  it('Should create property ad', (done) => {
+  it('Should upload an image to cloudinary', (done) => {
     const req = chai.request(app)
       .post('/api/v1/property/');
     req.set('Authorization', authToken)

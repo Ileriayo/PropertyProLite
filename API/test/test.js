@@ -156,7 +156,7 @@ describe('POST /api/v1/property', () => {
   it('Should create property ad', (done) => {
     const req = chai.request(app)
       .post('/api/v1/property/');
-    req.set('Authorization', authToken)
+    req.set('Authorization', `Bearer ${authToken}`)
       .type('form')
       .send({
         price: 3000000,
@@ -170,6 +170,46 @@ describe('POST /api/v1/property', () => {
         res.should.have.status(201);
         res.body.should.be.a('object');
         propertyId = res.body.data.id;
+        done();
+      });
+  });
+
+  it('Should create property ad', (done) => {
+    const req = chai.request(app)
+      .post('/api/v1/property/');
+    req.set('Authorization', authToken)
+      .field({
+        price: 3000000,
+        state: 'Lagos',
+        city: 'Isale Eko',
+        address: '954, Mountain hill',
+        type: 'Mini Flat',
+        image_url: 'https://cloudinary.com/wef84r3nnf',
+      })
+      .attach('image_url', './UI/img/property1.jpg')
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        propertyId = res.body.data.id;
+        done();
+      });
+  });
+
+  it('Should reject an invalid property image file type', (done) => {
+    const req = chai.request(app)
+      .post('/api/v1/property/');
+    req.set('Authorization', authToken)
+      .field({
+        price: 3000000,
+        state: 'Lagos',
+        city: 'Isale Eko',
+        address: '954, Mountain hill',
+        type: 'Mini Flat',
+      })
+      .attach('image_url', './UI/css/style.css')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
         done();
       });
   });

@@ -230,6 +230,21 @@ describe('GET /api/v1/property', () => {
   });
 });
 
+describe('GET /api/v1/property?type=<:property-type>', () => {
+  it('Should get properties by type', (done) => {
+    const req = chai.request(app)
+      .get('/api/v1/property?type=Bungalow');
+    req.set('Authorization', authToken)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('data');
+        done();
+      });
+  });
+});
+
 describe('GET /api/v1/property/<:property-id>/', () => {
   it('Should get one property by id', (done) => {
     const req = chai.request(app)

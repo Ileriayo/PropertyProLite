@@ -15,6 +15,7 @@ const propertyModel = {
                   address, price, created_on, image_url,
                   owner_email, owner_phone_number)`, values)),
   getAllProperties: () => query(select('*', 'properties')),
+  getPropertiesByType: type => query(selectWhere('*', 'properties', type)),
   getPropertyById: id => query(selectWhere('*', 'properties', id)),
   deleteProperty: id => query(deleteFromDB('properties', id)),
   updateProperty: (price, id) => query(update('properties', price, id)),

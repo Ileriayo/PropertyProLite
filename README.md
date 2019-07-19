@@ -1,6 +1,8 @@
 # PropertyProLite
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
+[View The App](https://ileriayo.github.io/PropertyProLite/UI)
+
 [![Build Status](https://travis-ci.org/Ileriayo/PropertyProLite.svg?branch=develop)](https://travis-ci.org/Ileriayo/PropertyProLite)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e164092931be5b97219/maintainability)](https://codeclimate.com/github/Ileriayo/PropertyProLite/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e164092931be5b97219/test_coverage)](https://codeclimate.com/github/Ileriayo/PropertyProLite/test_coverage)
@@ -42,9 +44,9 @@ Property Pro Lite is a platform where people can create and/or search properties
 - Workflow ([Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))
 - [Branch, PR & Commit Naming Convention](https://github.com/andela/bestpractices/wiki/Git-naming-conventions-and-best-practices)
 
-## Hosted On (Coming soon)
-- GitHub Pages - UI
-- Heroku - API
+## Hosted On
+- GitHub Pages - UI ([https://ileriayo.github.io/PropertyProLite/UI](https://ileriayo.github.io/PropertyProLite/UI))
+- Heroku - API ([https://propertypro.herokuapp.com](https://propertypro.herokuapp.com))
 
 ## Continuous Integration (CI)
 - Travis CI

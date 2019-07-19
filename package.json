@@ -6,7 +6,7 @@
   "scripts": {
     "migration": "babel-node ./API/db/migration/createTables",
     "destroy_db": "babel-node ./API/db/migration/dropTables",
-    "test": "mocha --require babel-core/register API/test/**/*.js --timeout 1000000 --exit || true",
+    "test": "mocha --require babel-core/register API/test/**/*.js --timeout 100000 --exit || true",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "dev": "nodemon bin/dev",

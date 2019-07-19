@@ -20,7 +20,6 @@ class ImageHandler {
           error: 'Invalid Image Type',
         });
       }
-      console.log(req.body);
       return next();
     } catch (error) {
       return error;

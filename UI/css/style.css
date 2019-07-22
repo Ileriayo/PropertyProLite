@@ -603,6 +603,11 @@ nav.navbar__menu-mobile {
     margin: 0
 }
 
+.prop_image_icon {
+    width: 50px;
+    height: 30px;
+}
+
 /************************* END CONTENT SECTION *****************************/
 /********** START TABLE ************/
 table {
@@ -669,6 +674,11 @@ table tr:nth-child(odd) {
 
 td {
     padding: 10px;
+}
+
+.prop_price {
+    text-align: center;
+    padding: 5px 0;
 }
 
 .my_property_section {

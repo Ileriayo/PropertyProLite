@@ -61,7 +61,7 @@ input {
 }
 
 input:focus {
-    border-color: #92CF48;
+    border-color: #302D50;
     outline: 0;
     background-color: #ffffff;
 }
@@ -69,7 +69,7 @@ input:focus {
 .button {
     border-radius: 30px;
     padding: 10pt 20pt;
-    border: 1px solid #92CF48;
+    border: 1px solid #302D50;
     cursor: pointer;
     background-color: transparent;
     outline: none;
@@ -87,7 +87,7 @@ input:focus {
 
 .button:hover,
 .button:focus {
-    background-color: #92CF48;
+    background-color: #302D50;
     color: #fff
 }
 
@@ -669,7 +669,7 @@ table {
 }
 
 table tr:nth-child(even) {
-    background: #eee;
+    /* background: #eee; */
 }
 
 table tr:nth-child(odd) {

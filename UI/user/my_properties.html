@@ -63,13 +63,15 @@
     <main class="content-section">
         <section class="content-section__main content-section__main-2">
             <section class="container--post-property">
-                <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">Click to
-                        Post a Property Ad</a></p>
+                <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">+</a></p>
+                <!-- <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">Click to
+                        Post a Property Ad</a></p> -->
                 <form action="./my_properties.html" class="no-display container--form">
+                    <p class="container__title container__desc">Post a Property Ad</p>
                     <div class="row">
                         <div class="column1_1">
                             <label>Image URL</label>
-                            <input type="url" name="prop-url" placeholder="e.g. https://cloudinary.com/example-image">
+                            <input type="file" name="prop-url">
                         </div>
                         <div class="column1_2">
                             <label>Property Type</label>
@@ -100,6 +102,7 @@
                 </form>
             </section>
             <section class="my_property_section">
+                <p class="container__title container__desc">My Property Listing</p>
                 <hr>
                 <table class="my_property_table">
                     <thead>

@@ -12,12 +12,12 @@
 
 <body>
     <header>
-        <div class="navbar">
+        <div class="navbar navbar--background">
             <a href="../index.html" class="navbar__logo">PropertyPro</a>
             <nav class="navbar__menu">
-                <ul>
+                <ul class="dropdown-arrow">
                     <li><img src="../img/profile-pic.svg" alt="pro-pic"></li>
-                    <li class="dropdown-arrow">
+                    <li>
                         <a href="javascript:void(0);" class="no-border-on-hover">
                             <img src="../img/dropdown-arrow.svg" alt="">
                         </a>
@@ -63,13 +63,15 @@
     <main class="content-section">
         <section class="content-section__main content-section__main-2">
             <section class="container--post-property">
-                <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">Click to
-                        Post a Property Ad</a></p>
+                <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">+</a></p>
+                <!-- <p class="container__title container__desc"><a href="javascript:void(0)" class="property_ad">Click to
+                        Post a Property Ad</a></p> -->
                 <form action="./my_properties.html" class="no-display container--form">
+                    <p class="container__title container__desc">Post a Property Ad</p>
                     <div class="row">
                         <div class="column1_1">
                             <label>Image URL</label>
-                            <input type="url" name="prop-url" placeholder="e.g. https://cloudinary.com/example-image">
+                            <input type="file" name="prop-url">
                         </div>
                         <div class="column1_2">
                             <label>Property Type</label>
@@ -100,27 +102,28 @@
                 </form>
             </section>
             <section class="my_property_section">
+                <p class="container__title container__desc">My Property Listing</p>
                 <hr>
                 <table class="my_property_table">
                     <thead>
                         <tr>
                             <th>S/N</th>
-                            <th>Property</th>
+                            <th>Image</th>
                             <th>Type</th>
                             <th>Price</th>
                             <th>Address</th>
                             <th>City</th>
                             <th>State</th>
-                            <th colspan="2">Action</th>
-                            <th>Status (Mark as)</th>
+                            <th colspan="2"></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><a href="">https://cloudinary.com/emaple-image</a></td>
+                            <td><img src="../img/property1.jpg" alt="" class="prop_image_icon"></td>
                             <td>3 Bedroom Flat</td>
-                            <td>3000000</td>
+                            <td class="propprice">3000000</td>
                             <td>6045B Princeton Avenue</td>
                             <td>Princeton</td>
                             <td>Lagos</td>
@@ -129,16 +132,53 @@
                             <td><button class="button button--small btn-delete">Delete</button><button
                                     class="button button--small btn-cancel no-display">Cancel</button></td>
                             <td>
-                                <select name="property_status">
-                                    <option value="null">------------</option>
-                                    <option value="available">Available</option>
+                                <select name="property_status" class="sold">
+                                    <option value="null" selected disabled>Mark as</option>
                                     <option value="sold">Sold</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><a href="">https://cloudinary.com/emaple-image</a></td>
+                            <td><img src="../img/property1.jpg" alt="" class="prop_image_icon"></td>
+                            <td>3 Bedroom Flat</td>
+                            <td class="propprice">3000000</td>
+                            <td>6045B Princeton Avenue</td>
+                            <td>Princeton</td>
+                            <td>Lagos</td>
+                            <td><button class="button button--small btn-edit">Edit</button><button
+                                    class="button button--small btn-update no-display">Update</button></td>
+                            <td><button class="button button--small btn-delete">Delete</button><button
+                                    class="button button--small btn-cancel no-display">Cancel</button></td>
+                            <td>
+                                <select name="property_status" class="sold">
+                                    <option value="null" selected disabled>Mark as</option>
+                                    <option value="sold">Sold</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="../img/property1.jpg" alt="" class="prop_image_icon"></td>
+                            <td>3 Bedroom Flat</td>
+                            <td class="propprice">3000000</td>
+                            <td>6045B Princeton Avenue</td>
+                            <td>Princeton</td>
+                            <td>Lagos</td>
+                            <td><button class="button button--small btn-edit">Edit</button><button
+                                    class="button button--small btn-update no-display">Update</button></td>
+                            <td><button class="button button--small btn-delete">Delete</button><button
+                                    class="button button--small btn-cancel no-display">Cancel</button></td>
+                            <td>
+                                <select name="property_status" class="sold">
+                                    <option value="null" selected disabled>Mark as</option>
+                                    <option value="sold">Sold</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="../img/property1.jpg" alt="" class="prop_image_icon"></td>
                             <td>3 Bedroom Flat</td>
                             <td>3000000</td>
                             <td>6045B Princeton Avenue</td>
@@ -149,9 +189,27 @@
                             <td><button class="button button--small btn-delete">Delete</button><button
                                     class="button button--small btn-cancel no-display">Cancel</button></td>
                             <td>
-                                <select name="property_status">
-                                    <option value="null">------------</option>
-                                    <option value="available">Available</option>
+                                <select name="property_status" class="sold">
+                                    <option value="null" selected disabled>Mark as</option>
+                                    <option value="sold">Sold</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img src="../img/property1.jpg" alt="" class="prop_image_icon"></td>
+                            <td>3 Bedroom Flat</td>
+                            <td class="propprice">3000000</td>
+                            <td>6045B Princeton Avenue</td>
+                            <td>Princeton</td>
+                            <td>Lagos</td>
+                            <td><button class="button button--small btn-edit">Edit</button><button
+                                    class="button button--small btn-update no-display">Update</button></td>
+                            <td><button class="button button--small btn-delete">Delete</button><button
+                                    class="button button--small btn-cancel no-display">Cancel</button></td>
+                            <td>
+                                <select name="property_status" class="sold">
+                                    <option value="null" selected disabled>Mark as</option>
                                     <option value="sold">Sold</option>
                                 </select>
                             </td>

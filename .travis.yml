@@ -1,0 +1,27 @@
+language: node_js
+node_js: 
+  - "stable"
+cache:
+  directories:
+    - "node_modules"
+after_success:
+- npm run coverage
+env:
+  global:
+    - CC_TEST_REPORTER_ID=87ba083c47c43545f1ce42dbad5a70f5097f269a09a8b696508ebdf55ec307f1
+language: node_js
+rvm:
+  - 2.2.0
+before_script:
+  - sudo service postgresql stop
+  - yarn global add nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm run coverage
+  - npm run coveralls
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+notifications:
+  email:false

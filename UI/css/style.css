@@ -2,7 +2,6 @@
 body {
     font-family: Nunito, "Segoe UI", cursive, Arial, Helvetica, sans-serif;
     margin: 0;
-
 }
 
 html {
@@ -25,7 +24,7 @@ a {
 
 a.active {
     background: #282639;
-    border-left: 3px solid #92CF48;
+    border-left: 3px solid #fff;
 }
 
 ul {
@@ -61,7 +60,7 @@ input {
 }
 
 input:focus {
-    border-color: #92CF48;
+    border-color: #302D50;
     outline: 0;
     background-color: #ffffff;
 }
@@ -69,7 +68,7 @@ input:focus {
 .button {
     border-radius: 30px;
     padding: 10pt 20pt;
-    border: 1px solid #92CF48;
+    border: 1px solid #302D50;
     cursor: pointer;
     background-color: transparent;
     outline: none;
@@ -87,7 +86,7 @@ input:focus {
 
 .button:hover,
 .button:focus {
-    background-color: #92CF48;
+    background-color: #302D50;
     color: #fff
 }
 
@@ -97,7 +96,7 @@ form {
 
 .on-hover-effect a:hover {
     background: #282639;
-    border-left: 3px solid #92CF48;
+    border-left: 3px solid #fff;
     transition: .11s ease-in;
 }
 
@@ -116,6 +115,9 @@ form {
     justify-content: space-between;
     align-items: center;
     color: #fff;
+}
+
+.navbar--background {
     background-color: #302D50;
 }
 
@@ -153,7 +155,7 @@ form {
 
 .navbar__menu {
     display: none;
-    font-size: 1.5em
+    font-size: 1.6em
 }
 
 @media (min-width: 768px) {
@@ -166,13 +168,17 @@ form {
     }
 }
 
+.dropdown-arrow {
+    padding: 0;
+}
+
 .navbar__menu li {
     margin-left: 4pt;
     display: inline-block;
 }
 
 .navbar__menu li a:hover {
-    border-bottom: 3px solid #92CF48;
+    border-bottom: 3px solid #fff;
     transition: .11s ease-in;
 }
 
@@ -256,14 +262,14 @@ nav.navbar__menu-mobile {
 .navbar__menu ul li a img {
     position: relative;
     top: -1px;
-    right: 10px;
-    width: 14px;
+    right: 15px;
+    width: 11px;
 }
 
 .navbar__menu ul li img {
     position: relative;
     top: 7px;
-    width: .9em;
+    width: 1.2em;
 }
 
 .navbar__menu-profile {
@@ -300,7 +306,7 @@ nav.navbar__menu-mobile {
 .hero {
     position: relative;
     width: 100%;
-    background-image: url("../img/home.png");
+    background-image: url("../img/hotel.jpg");
     box-shadow: 0 4px 11px rgba(124, 146, 169, 0.5);
     background-size: cover;
     background-position: center center;
@@ -312,7 +318,7 @@ nav.navbar__menu-mobile {
     position: absolute;
     height: 100%;
     width: 100%;
-    opacity: 0.91;
+    opacity: 0.6;
     z-index: 1;
     background-color: #302D50;
 }
@@ -603,6 +609,11 @@ nav.navbar__menu-mobile {
     margin: 0
 }
 
+.prop_image_icon {
+    width: 50px;
+    height: 30px;
+}
+
 /************************* END CONTENT SECTION *****************************/
 /********** START TABLE ************/
 table {
@@ -660,7 +671,7 @@ table {
 }
 
 table tr:nth-child(even) {
-    background: #eee;
+    /* background: #eee; */
 }
 
 table tr:nth-child(odd) {
@@ -669,6 +680,11 @@ table tr:nth-child(odd) {
 
 td {
     padding: 10px;
+}
+
+.prop_price {
+    text-align: center;
+    padding: 5px 0;
 }
 
 .my_property_section {

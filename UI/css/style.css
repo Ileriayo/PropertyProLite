@@ -670,10 +670,6 @@ table {
     }
 }
 
-table tr:nth-child(even) {
-    /* background: #eee; */
-}
-
 table tr:nth-child(odd) {
     background: #d2d0ff;
 }
@@ -701,6 +697,22 @@ td {
 
 .my_property_table tr {
     text-align: center;
+}
+
+.property__detail {
+    display: inline-block;
+    background: #eee;
+    color: #302D50;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    min-width: 120px;
+    box-shadow: 0 4px 11px rgba(124, 146, 169, 0.5);
+}
+
+.property__detail p:first-child {
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 /********** END TABLE ************/

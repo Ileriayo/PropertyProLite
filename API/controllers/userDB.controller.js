@@ -26,7 +26,9 @@ class UserController {
         [email, first_name, last_name, hashedPassword, phone_number, address, false]);
       // console.log('This user just signed up:', newUser);
       const { id } = newUser[0];
-      const token = await tokenizer({ id });
+      const token = await tokenizer({
+        id, email, first_name, last_name, phone_number,
+      });
       return res.status(201).json({
         status: 'success',
         message: 'Sign up successful',
@@ -48,8 +50,12 @@ class UserController {
     //     error: 'Login unsuccessful',
     //   });
     // }
-    const { id, first_name, last_name } = validUser[0];
-    const token = await tokenizer({ id });
+    const {
+      id, first_name, last_name, phone_number,
+    } = validUser[0];
+    const token = await tokenizer({
+      id, email, first_name, last_name, phone_number,
+    });
     return res.status(200).json({
       status: 'success',
       message: 'Sign in successful',

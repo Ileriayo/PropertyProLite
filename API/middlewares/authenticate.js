@@ -18,8 +18,13 @@ export default class Authenticate {
         token = token.slice(7, token.length).trimLeft();
       }
       const tokenDetails = await decodeToken(token);
-      const { id } = tokenDetails;
-      const user = await getUserById(id);
+      const {
+        id, email, firstName, lastName, phoneNumber,
+      } = tokenDetails;
+      const user = {
+        id, email, firstName, lastName, phoneNumber,
+      };
+      // const user = await getUserById(id);
       // console.log('This USER: %s has token: %s', user, token);
       req.user = user;
       return next();

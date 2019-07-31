@@ -27,14 +27,14 @@ export default class CheckEmail {
       const { body: { email, password } } = req;
       const validUser = await getUserByEmail(email);
       // console.log('This user is trying to sign in:', validUser);
-      if (validUser.length <= 0 && await checkPassword(password, validUser.password)) {
-        return res.status(401).json({
-          status: 'error',
-          error: 'Login Unsuccessful',
-        });
+      if (validUser.length > 0 && await checkPassword(password, validUser[0].password)) {
+        req.validUser = validUser;
+        return next();
       }
-      req.validUser = validUser;
-      return next();
+      return res.status(401).json({
+        status: 'error',
+        error: 'Login Unsuccessful',
+      });
     } catch (error) {
       return error;
     }

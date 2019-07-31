@@ -44,19 +44,26 @@
             <div class="container container--login">
                 <h1 class="container__title">Login</h1>
                 <p class="container__desc">Enter your email address and password</p>
-                <form action="./user/all_properties.html">
+                <form id="form">
                     <label>Email</label>
-                    <input type="text" name="email" placeholder="e.g. ileriayo@gmail.com">
+                    <label class="errorDiv" id="email_error"></label>
+                    <input type="text" name="email" id="email" placeholder="e.g. ileriayo@gmail.com">
+
                     <label>Password</label>
-                    <input type="password" name="password"
+                    <label class="errorDiv" id="password_error"></label>
+                    <input type="password" name="password" id="password"
                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                         autocomplete="off">
-                    <button type='submit' class="button">Log in</button> <br>
+                    
+                    <label class="errorDiv center" id="login_error"></label>
+
+                    <button type='submit' id='submit' class="button">Log in</button> <br>
                     <h6><a href="#">Forgot your password?</a></h6>
                 </form>
             </div>
         </section>
     </main>
     <script src="./js/app.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 </html>

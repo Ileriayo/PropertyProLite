@@ -18,7 +18,8 @@ class PropertyController {
       },
     } = req;
     // const image_url = req.file.originalname;
-    const { email, phone_number } = req.user[0];
+    // const { email, phone_number } = req.user[0];
+    const { email, phone_number } = req.user;
     try {
       const property = await addProperty(`'Available', '${type}', '${state}', '${city}','${address}',
                          '${price}', '${new Date().toLocaleString()}', '${image_url}', '${email}', '${phone_number}'`);

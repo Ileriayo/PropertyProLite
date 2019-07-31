@@ -1,7 +1,5 @@
-import userDBModel from '../models/usersDB.models';
 import DecodeToken from '../helpers/decodeToken';
 
-const { getUserById } = userDBModel;
 const { decodeToken } = DecodeToken;
 
 export default class Authenticate {
@@ -24,8 +22,6 @@ export default class Authenticate {
       const user = {
         id, email, firstName, lastName, phoneNumber,
       };
-      // const user = await getUserById(id);
-      // console.log('This USER: %s has token: %s', user, token);
       req.user = user;
       return next();
     } catch (error) {

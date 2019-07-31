@@ -434,7 +434,7 @@ nav.navbar__menu-mobile {
     font-weight: 300;
 }
 
-.container__desc {
+.container__desc, .center {
     text-align: center;
 }
 

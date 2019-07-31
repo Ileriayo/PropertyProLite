@@ -42,7 +42,6 @@ const formPost = async (e) => {
     }
 
     if (res.status === 401) login_error.textContent = `${data.error}`;
-    console.log(res);
     if (res.ok) {
       window.location.href = '../UI/user/all_properties.html';
     }
